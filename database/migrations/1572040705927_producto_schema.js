@@ -7,12 +7,12 @@ class ProductoSchema extends Schema {
   up () {
     this.create('productos', (table) => {
       table.increments()
-      table.timestamps()
       table.string('nombre', 50).notNullable();
-      table.float('precio', 2)
+      table.float('precio', 5, 2)
       table.integer('cantidad')
       table.string('marca', 50).notNullable();
       table.integer('provedor_id').unsigned().references('id').inTable('provedors')
+      table.timestamps()
     })
   }
 

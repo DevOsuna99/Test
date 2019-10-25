@@ -16,4 +16,14 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.post('productos/crear', 'ProductoController.store')
+Route.put('productos/edit/:id', 'ProductoController.update')
+Route.delete('productos/delete/:id', 'ProductoController.destroy')
+
+Route.post('provedores/crear', 'ProvedorController.store')
+Route.put('provedores/edit/:id', 'ProvedorController.update')
+Route.delete('provedores/delete/:id', 'ProvedorController.destroy')
+
+Route.post('Inventario/crear', 'InventarioController.store')
+Route.put('Inventario/edit/:id', 'InventarioController.update')
+Route.delete('Inventario/delete/:id', 'InventarioController.destroy')

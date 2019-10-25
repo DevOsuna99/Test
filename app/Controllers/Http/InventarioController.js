@@ -1,18 +1,18 @@
 'use strict'
 
-var Producto = use('App/Models/Producto')
+var Inventario = use('App/Models/Inventario')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with productos
+ * Resourceful controller for interacting with inventarios
  */
-class ProductoController {
+class InventarioController {
   /**
-   * Show a list of all productos.
-   * GET productos
+   * Show a list of all inventarios.
+   * GET inventarios
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -23,8 +23,8 @@ class ProductoController {
   }
 
   /**
-   * Render a form to be used for creating a new producto.
-   * GET productos/create
+   * Render a form to be used for creating a new inventario.
+   * GET inventarios/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -35,8 +35,8 @@ class ProductoController {
   }
 
   /**
-   * Create/save a new producto.
-   * POST productos
+   * Create/save a new inventario.
+   * POST inventarios
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -44,22 +44,16 @@ class ProductoController {
    */
   async store ({ request, response }) {
 
-    var producto = new Producto()
-    producto.nombre = request.input('nombre')
-    producto.precio = request.input('precio')
-    producto.cantidad = request.input('cantidad')
-    producto.marca = request.input('marca')
-    producto.provedor_id = request.input('provedor_id')
+    var inventario = new Inventario()
+    inventario.fecha = request.input('fecha')
+    inventario.producto_id = request.input('producto_id')
 
-    await producto.save()
-
-    // return response.redirect(producto)
-    
+    await inventario.save()
   }
 
   /**
-   * Display a single producto.
-   * GET productos/:id
+   * Display a single inventario.
+   * GET inventarios/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -67,12 +61,11 @@ class ProductoController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-
   }
 
   /**
-   * Render a form to update an existing producto.
-   * GET productos/:id/edit
+   * Render a form to update an existing inventario.
+   * GET inventarios/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -83,8 +76,8 @@ class ProductoController {
   }
 
   /**
-   * Update producto details.
-   * PUT or PATCH productos/:id
+   * Update inventario details.
+   * PUT or PATCH inventarios/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -92,20 +85,16 @@ class ProductoController {
    */
   async update ({ params, request, response }) {
 
-    var producto = await Producto.find(params.id)
-    producto.nombre = request.input('nombre')
-    producto.precio = request.input('precio')
-    producto.cantidad = request.input('cantidad')
-    producto.marca = request.input('marca')
-    producto.provedor_id = request.input('provedor_id')
+    var inventario = await Inventario.find(params.id)
+    inventario.fecha = request.input('fecha')
+    inventario.producto_id = request.input('producto_id')
 
-    await producto.save()
-
+    await inventario.save()
   }
 
   /**
-   * Delete a producto with id.
-   * DELETE productos/:id
+   * Delete a inventario with id.
+   * DELETE inventarios/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -113,10 +102,9 @@ class ProductoController {
    */
   async destroy ({ params, request, response }) {
 
-    var producto = await Producto.find(params.id)
-    await producto.delete()
-
+    var inventario = await Inventario.find(params.id)
+    await inventario.delete()
   }
 }
 
-module.exports = ProductoController
+module.exports = InventarioController

@@ -6,7 +6,7 @@ const Model = use('Model')
 class Provedor extends Model {
 
     static get table () {
-        return 'provedor'
+        return 'provedors'
     }
 }
 

@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Inventario extends Model {
     static get table () {
-        return 'inventario'
+        return 'inventarios'
     }
 }
 

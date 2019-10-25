@@ -7,8 +7,8 @@ class ProvedorSchema extends Schema {
   up () {
     this.create('provedors', (table) => {
       table.increments()
-      table.timestamps()
       table.string('nombre', 50).notNullable();
+      table.timestamps()
     })
   }
 

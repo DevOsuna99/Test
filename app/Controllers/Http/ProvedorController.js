@@ -1,18 +1,18 @@
 'use strict'
 
-var Producto = use('App/Models/Producto')
+var Provedor = use('App/Models/Provedor')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with productos
+ * Resourceful controller for interacting with provedors
  */
-class ProductoController {
+class ProvedorController {
   /**
-   * Show a list of all productos.
-   * GET productos
+   * Show a list of all provedors.
+   * GET provedors
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -23,8 +23,8 @@ class ProductoController {
   }
 
   /**
-   * Render a form to be used for creating a new producto.
-   * GET productos/create
+   * Render a form to be used for creating a new provedor.
+   * GET provedors/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -35,8 +35,8 @@ class ProductoController {
   }
 
   /**
-   * Create/save a new producto.
-   * POST productos
+   * Create/save a new provedor.
+   * POST provedors
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -44,22 +44,15 @@ class ProductoController {
    */
   async store ({ request, response }) {
 
-    var producto = new Producto()
-    producto.nombre = request.input('nombre')
-    producto.precio = request.input('precio')
-    producto.cantidad = request.input('cantidad')
-    producto.marca = request.input('marca')
-    producto.provedor_id = request.input('provedor_id')
+    var provedor = new Provedor()
+    provedor.nombre = request.input('nombre')
 
-    await producto.save()
-
-    // return response.redirect(producto)
-    
+    await provedor.save()
   }
 
   /**
-   * Display a single producto.
-   * GET productos/:id
+   * Display a single provedor.
+   * GET provedors/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -67,12 +60,11 @@ class ProductoController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-
   }
 
   /**
-   * Render a form to update an existing producto.
-   * GET productos/:id/edit
+   * Render a form to update an existing provedor.
+   * GET provedors/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -83,8 +75,8 @@ class ProductoController {
   }
 
   /**
-   * Update producto details.
-   * PUT or PATCH productos/:id
+   * Update provedor details.
+   * PUT or PATCH provedors/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -92,20 +84,15 @@ class ProductoController {
    */
   async update ({ params, request, response }) {
 
-    var producto = await Producto.find(params.id)
-    producto.nombre = request.input('nombre')
-    producto.precio = request.input('precio')
-    producto.cantidad = request.input('cantidad')
-    producto.marca = request.input('marca')
-    producto.provedor_id = request.input('provedor_id')
+    var provedor = await Provedor.find(params.id)
+    provedor.nombre = request.input('nombre')
 
-    await producto.save()
-
+    await provedor.save()
   }
 
   /**
-   * Delete a producto with id.
-   * DELETE productos/:id
+   * Delete a provedor with id.
+   * DELETE provedors/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -113,10 +100,9 @@ class ProductoController {
    */
   async destroy ({ params, request, response }) {
 
-    var producto = await Producto.find(params.id)
-    await producto.delete()
-
+    var provedor = await Provedor.find(params.id)
+    await provedor.delete()
   }
 }
 
-module.exports = ProductoController
+module.exports = ProvedorController
