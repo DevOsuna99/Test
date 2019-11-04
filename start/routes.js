@@ -24,6 +24,7 @@ Route.post('provedores/crear', 'ProvedorController.store')
 Route.put('provedores/edit/:id', 'ProvedorController.update')
 Route.delete('provedores/delete/:id', 'ProvedorController.destroy')
 
+Route.get('Inventario', 'InventarioController.index')
 Route.post('Inventario/crear', 'InventarioController.store')
 Route.put('Inventario/edit/:id', 'InventarioController.update')
 Route.delete('Inventario/delete/:id', 'InventarioController.destroy')

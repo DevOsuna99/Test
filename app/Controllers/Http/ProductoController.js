@@ -49,7 +49,6 @@ class ProductoController {
     producto.precio = request.input('precio')
     producto.cantidad = request.input('cantidad')
     producto.marca = request.input('marca')
-    producto.provedor_id = request.input('provedor_id')
 
     await producto.save()
 
@@ -97,7 +96,6 @@ class ProductoController {
     producto.precio = request.input('precio')
     producto.cantidad = request.input('cantidad')
     producto.marca = request.input('marca')
-    producto.provedor_id = request.input('provedor_id')
 
     await producto.save()
 

@@ -8,6 +8,7 @@ class InventarioSchema extends Schema {
     this.create('inventarios', (table) => {
       table.increments()
       table.integer('producto_id').unsigned().references('id').inTable('productos')
+      table.integer('provedor_id').unsigned().references('id').inTable('provedors')
       table.date('fecha')
       table.timestamps()
     })

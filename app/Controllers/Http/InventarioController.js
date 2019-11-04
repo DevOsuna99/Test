@@ -20,6 +20,8 @@ class InventarioController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    const inventario = await Inventario.query().with('producto').with('provedor').fetch()
+    return response.json(inventario)
   }
 
   /**
@@ -47,6 +49,7 @@ class InventarioController {
     var inventario = new Inventario()
     inventario.fecha = request.input('fecha')
     inventario.producto_id = request.input('producto_id')
+    inventario.provedor_id = request.input('provedor_id')
 
     await inventario.save()
   }
